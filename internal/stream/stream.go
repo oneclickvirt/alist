@@ -9,10 +9,10 @@ import (
 	"math"
 	"os"
 
-	"github.com/alist-org/alist/v3/internal/errs"
-	"github.com/alist-org/alist/v3/internal/model"
-	"github.com/alist-org/alist/v3/pkg/http_range"
-	"github.com/alist-org/alist/v3/pkg/utils"
+	"github.com/oneclickvirt/alist/v3/internal/errs"
+	"github.com/oneclickvirt/alist/v3/internal/model"
+	"github.com/oneclickvirt/alist/v3/pkg/http_range"
+	"github.com/oneclickvirt/alist/v3/pkg/utils"
 	"github.com/sirupsen/logrus"
 	"go4.org/readerutil"
 )

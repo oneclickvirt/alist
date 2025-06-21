@@ -6,10 +6,10 @@ import (
 	"sync"
 
 	driver115 "github.com/SheltonZhu/115driver/pkg/driver"
-	"github.com/alist-org/alist/v3/internal/driver"
-	"github.com/alist-org/alist/v3/internal/model"
-	"github.com/alist-org/alist/v3/pkg/http_range"
-	"github.com/alist-org/alist/v3/pkg/utils"
+	"github.com/oneclickvirt/alist/v3/internal/driver"
+	"github.com/oneclickvirt/alist/v3/internal/model"
+	"github.com/oneclickvirt/alist/v3/pkg/http_range"
+	"github.com/oneclickvirt/alist/v3/pkg/utils"
 	"github.com/pkg/errors"
 	"golang.org/x/time/rate"
 )

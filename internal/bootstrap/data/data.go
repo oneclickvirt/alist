@@ -1,6 +1,6 @@
 package data
 
-import "github.com/alist-org/alist/v3/cmd/flags"
+import "github.com/oneclickvirt/alist/v3/cmd/flags"
 
 func InitData() {
 	initUser()

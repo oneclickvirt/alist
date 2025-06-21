@@ -93,11 +93,11 @@ jobs:
           musl-target-format: $os-$musl-$arch
           out-dir: build
           x-flags: |
-            github.com/alist-org/alist/v3/internal/conf.BuiltAt=$built_at
-            github.com/alist-org/alist/v3/internal/conf.GitAuthor=Xhofe
-            github.com/alist-org/alist/v3/internal/conf.GitCommit=$git_commit
-            github.com/alist-org/alist/v3/internal/conf.Version=$tag
-            github.com/alist-org/alist/v3/internal/conf.WebVersion=dev
+            github.com/oneclickvirt/alist/v3/internal/conf.BuiltAt=$built_at
+            github.com/oneclickvirt/alist/v3/internal/conf.GitAuthor=Xhofe
+            github.com/oneclickvirt/alist/v3/internal/conf.GitCommit=$git_commit
+            github.com/oneclickvirt/alist/v3/internal/conf.Version=$tag
+            github.com/oneclickvirt/alist/v3/internal/conf.WebVersion=dev
 
       - name: Compress
         run: |
@@ -119,7 +119,7 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v4
         with:
-          repository: alist-org/desktop-release
+          repository: oneclickvirt/desktop-release
           ref: main
           persist-credentials: false
           fetch-depth: 0
@@ -135,4 +135,4 @@ jobs:
         with:
           github_token: ${{ secrets.MY_TOKEN }}
           branch: main
-          repository: alist-org/desktop-release
+          repository: oneclickvirt/desktop-release

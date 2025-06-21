@@ -4,13 +4,13 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/alist-org/alist/v3/internal/conf"
-	"github.com/alist-org/alist/v3/internal/model"
-	"github.com/alist-org/alist/v3/internal/op"
-	"github.com/alist-org/alist/v3/internal/sign"
-	"github.com/alist-org/alist/v3/pkg/utils/random"
-	"github.com/alist-org/alist/v3/server/common"
-	"github.com/alist-org/alist/v3/server/static"
+	"github.com/oneclickvirt/alist/v3/internal/conf"
+	"github.com/oneclickvirt/alist/v3/internal/model"
+	"github.com/oneclickvirt/alist/v3/internal/op"
+	"github.com/oneclickvirt/alist/v3/internal/sign"
+	"github.com/oneclickvirt/alist/v3/pkg/utils/random"
+	"github.com/oneclickvirt/alist/v3/server/common"
+	"github.com/oneclickvirt/alist/v3/server/static"
 	"github.com/gin-gonic/gin"
 )
 

@@ -6,9 +6,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/alist-org/alist/v3/cmd/flags"
-	"github.com/alist-org/alist/v3/internal/conf"
-	"github.com/alist-org/alist/v3/internal/db"
+	"github.com/oneclickvirt/alist/v3/cmd/flags"
+	"github.com/oneclickvirt/alist/v3/internal/conf"
+	"github.com/oneclickvirt/alist/v3/internal/db"
 	log "github.com/sirupsen/logrus"
 	"gorm.io/driver/mysql"
 	"gorm.io/driver/postgres"

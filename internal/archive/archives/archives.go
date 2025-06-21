@@ -7,10 +7,10 @@ import (
 	stdpath "path"
 	"strings"
 
-	"github.com/alist-org/alist/v3/internal/archive/tool"
-	"github.com/alist-org/alist/v3/internal/model"
-	"github.com/alist-org/alist/v3/internal/stream"
-	"github.com/alist-org/alist/v3/pkg/utils"
+	"github.com/oneclickvirt/alist/v3/internal/archive/tool"
+	"github.com/oneclickvirt/alist/v3/internal/model"
+	"github.com/oneclickvirt/alist/v3/internal/stream"
+	"github.com/oneclickvirt/alist/v3/pkg/utils"
 )
 
 type Archives struct {

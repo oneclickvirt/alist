@@ -3,15 +3,15 @@ package pikpak
 import (
 	"context"
 	"fmt"
-	"github.com/alist-org/alist/v3/internal/conf"
-	"github.com/alist-org/alist/v3/internal/setting"
+	"github.com/oneclickvirt/alist/v3/internal/conf"
+	"github.com/oneclickvirt/alist/v3/internal/setting"
 	"strconv"
 
-	"github.com/alist-org/alist/v3/drivers/pikpak"
-	"github.com/alist-org/alist/v3/internal/errs"
-	"github.com/alist-org/alist/v3/internal/model"
-	"github.com/alist-org/alist/v3/internal/offline_download/tool"
-	"github.com/alist-org/alist/v3/internal/op"
+	"github.com/oneclickvirt/alist/v3/drivers/pikpak"
+	"github.com/oneclickvirt/alist/v3/internal/errs"
+	"github.com/oneclickvirt/alist/v3/internal/model"
+	"github.com/oneclickvirt/alist/v3/internal/offline_download/tool"
+	"github.com/oneclickvirt/alist/v3/internal/op"
 )
 
 type PikPak struct {

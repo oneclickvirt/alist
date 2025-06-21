@@ -14,13 +14,13 @@ import (
 
 	"golang.org/x/sync/semaphore"
 
-	"github.com/alist-org/alist/v3/drivers/base"
-	"github.com/alist-org/alist/v3/internal/conf"
-	"github.com/alist-org/alist/v3/internal/driver"
-	"github.com/alist-org/alist/v3/internal/errs"
-	"github.com/alist-org/alist/v3/internal/model"
-	"github.com/alist-org/alist/v3/pkg/errgroup"
-	"github.com/alist-org/alist/v3/pkg/utils"
+	"github.com/oneclickvirt/alist/v3/drivers/base"
+	"github.com/oneclickvirt/alist/v3/internal/conf"
+	"github.com/oneclickvirt/alist/v3/internal/driver"
+	"github.com/oneclickvirt/alist/v3/internal/errs"
+	"github.com/oneclickvirt/alist/v3/internal/model"
+	"github.com/oneclickvirt/alist/v3/pkg/errgroup"
+	"github.com/oneclickvirt/alist/v3/pkg/utils"
 	"github.com/avast/retry-go"
 	log "github.com/sirupsen/logrus"
 )

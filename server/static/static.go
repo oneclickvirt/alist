@@ -9,10 +9,10 @@ import (
 	"os"
 	"strings"
 
-	"github.com/alist-org/alist/v3/internal/conf"
-	"github.com/alist-org/alist/v3/internal/setting"
-	"github.com/alist-org/alist/v3/pkg/utils"
-	"github.com/alist-org/alist/v3/public"
+	"github.com/oneclickvirt/alist/v3/internal/conf"
+	"github.com/oneclickvirt/alist/v3/internal/setting"
+	"github.com/oneclickvirt/alist/v3/pkg/utils"
+	"github.com/oneclickvirt/alist/v3/public"
 	"github.com/gin-gonic/gin"
 )
 
@@ -65,7 +65,7 @@ func UpdateIndex() {
 	mainColor := setting.GetStr(conf.MainColor)
 	conf.ManageHtml = conf.RawIndexHtml
 	replaceMap1 := map[string]string{
-		"https://jsd.nn.ci/gh/alist-org/logo@main/logo.svg": favicon,
+		"https://jsd.nn.ci/gh/oneclickvirt/logo@main/logo.svg": favicon,
 		"Loading...":            title,
 		"main_color: undefined": fmt.Sprintf("main_color: '%s'", mainColor),
 	}
