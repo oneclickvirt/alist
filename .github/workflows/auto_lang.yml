@@ -58,7 +58,7 @@ jobs:
           cd alist-web
           git add .
           git config --local user.email "root@spiritlhl.net"
-          git config --local user.name "IlaBot"
+          git config --local user.name "spiritlhl"
           git commit -m "chore: auto update i18n file" -a 2>/dev/null || :
           cd ..
 
