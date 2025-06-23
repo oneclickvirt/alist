@@ -133,7 +133,7 @@ jobs:
       - name: Commit
         run: |
           git config --local user.email "root@spiritlhl.net"
-          git config --local user.name "IlaBot"
+          git config --local user.name "spiritlhl"
           git commit --allow-empty -m "Trigger build for ${{ github.sha }}"
 
       - name: Push commit
