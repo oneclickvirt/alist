@@ -116,29 +116,29 @@ jobs:
           prerelease: true
           tag_name: beta
           
-  desktop:
-    needs:
-      - release
-    name: Beta Release Desktop
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-        with:
-          repository: oneclickvirt/desktop-release
-          ref: main
-          persist-credentials: false
-          fetch-depth: 0
+  # desktop:
+  #   needs:
+  #     - release
+  #   name: Beta Release Desktop
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Checkout repo
+  #       uses: actions/checkout@v4
+  #       with:
+  #         repository: oneclickvirt/desktop-release
+  #         ref: main
+  #         persist-credentials: false
+  #         fetch-depth: 0
 
-      - name: Commit
-        run: |
-          git config --local user.email "root@spiritlhl.net"
-          git config --local user.name "spiritlhl"
-          git commit --allow-empty -m "Trigger build for ${{ github.sha }}"
+  #     - name: Commit
+  #       run: |
+  #         git config --local user.email "root@spiritlhl.net"
+  #         git config --local user.name "spiritlhl"
+  #         git commit --allow-empty -m "Trigger build for ${{ github.sha }}"
 
-      - name: Push commit
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.MY_TOKEN }}
-          branch: main
-          repository: oneclickvirt/desktop-release
+  #     - name: Push commit
+  #       uses: ad-m/github-push-action@master
+  #       with:
+  #         github_token: ${{ secrets.MY_TOKEN }}
+  #         branch: main
+  #         repository: oneclickvirt/desktop-release
