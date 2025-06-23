@@ -48,7 +48,7 @@ require (
 	github.com/minio/sio v0.4.0
 	github.com/natefinch/lumberjack v2.0.0+incompatible
 	github.com/ncw/swift/v2 v2.0.3
-	github.com/oneclickvirt/gofakes3 v0.0.8
+	github.com/oneclickvirt/gofakes3 v0.0.9
 	github.com/oneclickvirt/times v0.0.1
 	github.com/pkg/errors v0.9.1
 	github.com/pkg/sftp v1.13.6
@@ -83,7 +83,7 @@ require (
 
 require (
 	github.com/Azure/azure-sdk-for-go/sdk/internal v1.10.0 // indirect
-	go.shabbyrobe.org/gocovmerge v0.0.0-20230507111327-fa4f82cfbf4d // indirect
+	github.com/shabbyrobe/gocovmerge v0.0.0-20230507112040-c3350d9342df // indirect
 )
 
 require (
