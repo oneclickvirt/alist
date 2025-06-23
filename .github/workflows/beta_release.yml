@@ -41,6 +41,12 @@ jobs:
         run: |
           git tag -l
           npx changelogithub --output CHANGELOG.md
+          MAX=120000
+          LEN=$(wc -c < CHANGELOG.md)
+          if [ "$LEN" -gt "$MAX" ]; then
+            echo "CHANGELOG.md too long ($LEN chars), truncating to $MAX chars..."
+            head -c $MAX CHANGELOG.md > tmp && echo -e "\n\n---\n**Truncated due to GitHub release body size limit.**" >> tmp && mv tmp CHANGELOG.md
+          fi
 #          npx changelogen@latest --output CHANGELOG.md
 
       - name: Upload assets
