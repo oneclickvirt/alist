@@ -13,7 +13,7 @@ if ! command -v curl >/dev/null 2>&1; then
     handle_error 1 "未找到 curl 命令，请先安装"
 fi
 
-# 配置部分
+# 配置部分 pre-release
 #######################
 # GitHub 相关配置
 GH_DOWNLOAD_URL="${GH_PROXY}https://github.com/oneclickvirt/alist/releases/latest/download"
