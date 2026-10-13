@@ -1,13 +1,15 @@
 name: Translation Helper
-
-on:
-  pull_request_target:
-    types: [opened]
-  issues:
-    types: [opened]
-
 jobs:
   translate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions-cool/translation-helper@v1.2.0
+    - uses: actions-cool/translation-helper@7f7f19e4af266fd06c250ee4ada9db8b5f094118 # v1.2.0
+'on':
+  pull_request_target:
+    types:
+    - opened
+  issues:
+    types:
+    - opened
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'

@@ -1,17 +1,24 @@
 name: Remove working label when issue closed
-
-on:
-  issues:
-    types: [closed]
-
 jobs:
   rm-working:
     runs-on: ubuntu-latest
     steps:
-      - name: Remove working label
-        uses: actions-cool/issues-helper@v3
-        with:
-          actions: 'remove-labels'
-          token: ${{ secrets.GITHUB_TOKEN }}
-          issue-number: ${{ github.event.issue.number }}
-          labels: 'working,pr-welcome'
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        persist-credentials: false
+    - name: Remove working label
+      run: python3 .github/scripts/issue_automation.py
+      env:
+        ISSUE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        ISSUE_ACTION: remove-labels
+        ISSUE_LABELS: working,pr-welcome
+        ISSUE_INACTIVE_DAYS: '0'
+        ISSUE_BODY: ''
+        ISSUE_CLOSE_REASON: completed
+    permissions:
+      contents: read
+      issues: write
+'on':
+  issues:
+    types:
+    - closed

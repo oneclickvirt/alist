@@ -1,19 +1,21 @@
 name: Issues Similarity Analysis
-
-on:
-  issues:
-    types: [opened, edited]
-
 jobs:
   similarity-analysis:
     runs-on: ubuntu-latest
     steps:
-      - name: analysis
-        uses: actions-cool/issues-similarity-analysis@v1
-        with:
-          filter-threshold: 0.5
-          comment-title: '### See'
-          comment-body: '${index}. ${similarity} #${number}'
-          show-footer: false
-          show-mentioned: true
-          since-days: 730
+    - name: analysis
+      uses: actions-cool/issues-similarity-analysis@0a5ea211e6a178915f0f754968fc94ff845bcb41 # v1.3.2
+      with:
+        filter-threshold: 0.5
+        comment-title: '### See'
+        comment-body: '${index}. ${similarity} #${number}'
+        show-footer: false
+        show-mentioned: true
+        since-days: 730
+'on':
+  issues:
+    types:
+    - opened
+    - edited
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'

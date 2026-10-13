@@ -15,7 +15,7 @@ jobs:
     steps:
 
       - name: Free Disk Space (Ubuntu)
-        uses: jlumbroso/free-disk-space@main
+        uses: jlumbroso/free-disk-space@ceedf095f4ec1a097402bc6bd80831f2e1a6fde6 # v2.0.0
         with:
           # this might remove tools that are actually needed,
           # if set to "true" but frees about 6 GB
@@ -31,19 +31,19 @@ jobs:
           swap-storage: true
 
       - name: Prerelease
-        uses: irongut/EditRelease@v1.2.0
+        uses: irongut/EditRelease@ccf529ad26dddf9996e7dd0f24ca5da4ea507cc2 # v1.2.0
         with:
           token: ${{ secrets.MY_TOKEN }}
           id: ${{ github.event.release.id }}
           prerelease: true
 
       - name: Setup Go
-        uses: actions/setup-go@v5
+        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
         with:
           go-version: ${{ matrix.go-version }}
 
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
 
@@ -59,7 +59,7 @@ jobs:
           bash build.sh release
 
       - name: Upload assets
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v3.0.3
         with:
           files: build/compress/*
           prerelease: false

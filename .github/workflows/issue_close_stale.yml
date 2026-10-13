@@ -1,21 +1,25 @@
 name: Close inactive
-
-on:
-  schedule:
-    - cron: "0 0 */7 * *"
-  workflow_dispatch:
-
 jobs:
   close-inactive:
     runs-on: ubuntu-latest
     steps:
-      - name: close-issues
-        uses: actions-cool/issues-helper@v3
-        with:
-          actions: 'close-issues'
-          token: ${{ secrets.GITHUB_TOKEN }}
-          labels: 'stale'
-          inactive-day: 8
-          close-reason: 'not_planned'
-          body: |
-            Hello @${{ github.event.issue.user.login }}, this issue was closed due to inactive more than 52 days. You can reopen or recreate it if you think it should continue. Thank you for your contributions again.
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        persist-credentials: false
+    - name: close-issues
+      run: python3 .github/scripts/issue_automation.py
+      env:
+        ISSUE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        ISSUE_ACTION: close-issues
+        ISSUE_LABELS: stale
+        ISSUE_INACTIVE_DAYS: '8'
+        ISSUE_BODY: Hello @{user}, this issue was closed due to inactive more than 52 days. You can reopen or recreate it
+          if you think it should continue. Thank you for your contributions again.
+        ISSUE_CLOSE_REASON: not_planned
+    permissions:
+      contents: read
+      issues: write
+'on':
+  schedule:
+  - cron: 0 0 */7 * *
+  workflow_dispatch: null

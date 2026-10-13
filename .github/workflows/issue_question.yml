@@ -1,20 +1,27 @@
 name: Issue Question
-
-on:
-  issues:
-    types: [labeled]
-
 jobs:
   create-comment:
     runs-on: ubuntu-latest
     if: github.event.label.name == 'question'
     steps:
-      - name: Create comment
-        uses: actions-cool/issues-helper@v3.6.0
-        with:
-          actions: 'create-comment'
-          token: ${{ secrets.GITHUB_TOKEN }}
-          issue-number: ${{ github.event.issue.number }}
-          body: |
-            Hello @${{ github.event.issue.user.login }}, please input issue by template and add detail. Issues labeled by `question` will be closed if no activities in 3 days.
-            你好 @${{ github.event.issue.user.login }}，请按照issue模板填写, 并详细说明问题/日志记录/复现步骤/复现链接/实现思路或提供更多信息等, 3天内未回复issue自动关闭。
+    - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        persist-credentials: false
+    - name: Create comment
+      run: python3 .github/scripts/issue_automation.py
+      env:
+        ISSUE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        ISSUE_ACTION: create-comment
+        ISSUE_LABELS: ''
+        ISSUE_INACTIVE_DAYS: '0'
+        ISSUE_BODY: |-
+          Hello @{user}, please input issue by template and add detail. Issues labeled by `question` will be closed if no activities in 3 days.
+          你好 @{user}，请按照issue模板填写, 并详细说明问题/日志记录/复现步骤/复现链接/实现思路或提供更多信息等, 3天内未回复issue自动关闭。
+        ISSUE_CLOSE_REASON: completed
+    permissions:
+      contents: read
+      issues: write
+'on':
+  issues:
+    types:
+    - labeled
