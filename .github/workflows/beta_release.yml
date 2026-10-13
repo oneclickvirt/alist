@@ -46,6 +46,8 @@ jobs:
         files: CHANGELOG.md
         prerelease: true
         tag_name: beta
+    env:
+      GOPROXY: https://proxy.golang.org|direct
   release:
     needs:
     - changelog
@@ -66,7 +68,7 @@ jobs:
     - name: Setup Go
       uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
       with:
-        go-version: '1.22'
+        go-version: stable
     - name: Setup web
       run: bash build.sh dev web
     - name: Build
@@ -96,5 +98,6 @@ jobs:
   push:
     branches:
     - main
+  workflow_dispatch: null
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
