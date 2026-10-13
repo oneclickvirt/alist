@@ -90,6 +90,8 @@ jobs:
         files: build/compress/*
         prerelease: true
         tag_name: beta
+    env:
+      GOPROXY: https://proxy.golang.org|direct
 'on':
   push:
     branches:

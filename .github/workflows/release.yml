@@ -1,92 +1,56 @@
 name: release
-
-on:
-  release:
-    types: [ published ]
-
 jobs:
   release:
     strategy:
       matrix:
-        platform: [ ubuntu-latest ]
-        go-version: [ '1.21' ]
+        platform:
+        - ubuntu-latest
+        go-version:
+        - '1.21'
     name: Release
     runs-on: ${{ matrix.platform }}
     steps:
-
-      - name: Free Disk Space (Ubuntu)
-        uses: jlumbroso/free-disk-space@ceedf095f4ec1a097402bc6bd80831f2e1a6fde6 # v2.0.0
-        with:
-          # this might remove tools that are actually needed,
-          # if set to "true" but frees about 6 GB
-          tool-cache: false
-          
-          # all of these default to true, but feel free to set to
-          # "false" if necessary for your workflow
-          android: true
-          dotnet: true
-          haskell: true
-          large-packages: true
-          docker-images: true
-          swap-storage: true
-
-      - name: Prerelease
-        uses: irongut/EditRelease@ccf529ad26dddf9996e7dd0f24ca5da4ea507cc2 # v1.2.0
-        with:
-          token: ${{ secrets.MY_TOKEN }}
-          id: ${{ github.event.release.id }}
-          prerelease: true
-
-      - name: Setup Go
-        uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
-        with:
-          go-version: ${{ matrix.go-version }}
-
-      - name: Checkout
-        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-        with:
-          fetch-depth: 0
-
-      - name: Install dependencies
-        run: |
-          sudo snap install zig --classic --beta
-          docker pull crazymax/xgo:latest
-          go install github.com/crazy-max/xgo@latest
-          sudo apt install upx
-
-      - name: Build
-        run: |
-          bash build.sh release
-
-      - name: Upload assets
-        uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v3.0.3
-        with:
-          files: build/compress/*
-          prerelease: false
-
-  # release_desktop:
-  #   needs: release
-  #   name: Release desktop
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Checkout repo
-  #       uses: actions/checkout@v4
-  #       with:
-  #         repository: oneclickvirt/desktop-release
-  #         ref: main
-  #         persist-credentials: false
-  #         fetch-depth: 0
-
-  #     - name: Add tag
-  #       run: |
-  #         git config --local user.email "root@spiritlhl.net"
-  #         git config --local user.name "IlaBot"
-  #         version=$(wget -qO- -t1 -T2 "https://api.github.com/repos/oneclickvirt/alist/releases/latest" | grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g')
-  #         git tag -a $version -m "release $version"
-
-  #     - name: Push tags
-  #       uses: ad-m/github-push-action@master
-  #       with:
-  #         github_token: ${{ secrets.MY_TOKEN }}
-  #         branch: main
-  #         repository: oneclickvirt/desktop-release
+    - name: Free Disk Space (Ubuntu)
+      uses: jlumbroso/free-disk-space@ceedf095f4ec1a097402bc6bd80831f2e1a6fde6 # v2.0.0
+      with:
+        tool-cache: false
+        android: true
+        dotnet: true
+        haskell: true
+        large-packages: true
+        docker-images: true
+        swap-storage: true
+    - name: Prerelease
+      uses: irongut/EditRelease@ccf529ad26dddf9996e7dd0f24ca5da4ea507cc2 # v1.2.0
+      with:
+        token: ${{ secrets.MY_TOKEN }}
+        id: ${{ github.event.release.id }}
+        prerelease: true
+    - name: Setup Go
+      uses: actions/setup-go@b7ad1dad31e06c5925ef5d2fc7ad053ef454303e # v7.0.0
+      with:
+        go-version: ${{ matrix.go-version }}
+    - name: Checkout
+      uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      with:
+        fetch-depth: 0
+    - name: Install dependencies
+      run: |
+        sudo snap install zig --classic --beta
+        docker pull crazymax/xgo:latest
+        go install github.com/crazy-max/xgo@latest
+        sudo apt install upx
+    - name: Build
+      run: |
+        bash build.sh release
+    - name: Upload assets
+      uses: softprops/action-gh-release@efb35369e0ad2afab669f228072c1b0d510eae64 # v3.0.3
+      with:
+        files: build/compress/*
+        prerelease: false
+    env:
+      GOPROXY: https://proxy.golang.org|direct
+'on':
+  release:
+    types:
+    - published

@@ -41,6 +41,8 @@ jobs:
       with:
         name: alist_${{ env.SHA }}_${{ matrix.target }}
         path: build/*
+    env:
+      GOPROXY: https://proxy.golang.org|direct
 'on':
   push:
     branches:
